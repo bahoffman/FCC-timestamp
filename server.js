@@ -37,13 +37,18 @@ app.get("/api/timestamp/:date_string", function(req, res) {
     const date = new Date(req.params.date_string);
     const unix = date.valueOf();
     const utc = date.toUTCString();
-    res.send({ unix: unix, utc: utc });
+    res.json({ unix: unix, utc: utc });
   } else {
     const unix = parseInt(req.params.date_string);
     const utc = new Date(unix);
-    res.send({ unix: unix, utc: utc });
+    res.json({ unix: unix, utc: utc });
   }
 });
+
+
+
+
+
 
 // listen for requests :)
 var listener = app.listen(process.env.PORT, function() {
